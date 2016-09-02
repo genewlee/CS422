@@ -24,13 +24,7 @@ namespace CS422
 		/// <summary>
 		/// Returns the encoding of the wrapped TextWriter object
 		/// </summary>
-		public override Encoding Encoding 
-		{
-			get 
-			{
-				return _tw.Encoding;
-			}
-		}
+		public override Encoding Encoding { get { return _tw.Encoding; } }
 
 		/// <summary>
 		/// Writes	the	current	line number,

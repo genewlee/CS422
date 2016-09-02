@@ -3,3 +3,8 @@
 /home/gene/Desktop/CS422/HW1/HW1/bin/Debug/HW1.exe
 /home/gene/Desktop/CS422/HW1/HW1/obj/x86/Debug/HW1.exe
 /home/gene/Desktop/CS422/HW1/HW1/obj/x86/Debug/HW1.exe.mdb
+/Volumes/ExStorageSD/CS422/HW1/HW1/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Volumes/ExStorageSD/CS422/HW1/HW1/bin/Debug/HW1.exe.mdb
+/Volumes/ExStorageSD/CS422/HW1/HW1/bin/Debug/HW1.exe
+/Volumes/ExStorageSD/CS422/HW1/HW1/obj/x86/Debug/HW1.exe
+/Volumes/ExStorageSD/CS422/HW1/HW1/obj/x86/Debug/HW1.exe.mdb

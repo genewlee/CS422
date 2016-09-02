@@ -20,14 +20,14 @@ namespace CS422
             var streamlength = 30;
             var buf = new Byte[streamlength];
             var ins = new IndexedNumsStream(streamlength);
-            ins.Read(buf, 2, 15);
+            ins.Read(buf, 4, 15);
             ins.Read(buf, 2, 16);
 
-//            System.Console.WriteLine("hello");
-//            foreach (var b in buf)
-//            {
-//                Console.WriteLine(b);
-//            }
+            System.Console.WriteLine("hello");
+            foreach (var b in buf)
+            {
+                Console.WriteLine(b);
+            }
 
 		}
 	}
