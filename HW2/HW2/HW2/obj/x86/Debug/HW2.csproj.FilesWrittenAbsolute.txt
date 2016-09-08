@@ -1,0 +1,6 @@
+/media/gene/XDrive/CS422/HW2/HW2/HW2/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/media/gene/XDrive/CS422/HW2/HW2/HW2/bin/Debug/HW2.exe.mdb
+/media/gene/XDrive/CS422/HW2/HW2/HW2/bin/Debug/HW2.exe
+/media/gene/XDrive/CS422/HW2/HW2/HW2/obj/x86/Debug/HW2.exe
+/media/gene/XDrive/CS422/HW2/HW2/HW2/obj/x86/Debug/HW2.exe.mdb
+/media/gene/XDrive/CS422/HW2/HW2/HW2/obj/x86/Debug/.NETFramework,Version=v4.5.1.AssemblyAttribute.cs
