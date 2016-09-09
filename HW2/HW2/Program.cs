@@ -7,20 +7,20 @@ namespace CS422
     {
         static void Main()
         {
-            var tpss = new ThreadPoolSleepSorter(Console.Out, 0);
+            /*var tpss = new ThreadPoolSleepSorter(Console.Out, 0);
             var testArray = new byte[] {7, 1, 4, 2, 7, 3, 9};
             tpss.Sort(testArray);
+            tpss.Dispose();
             var testArray2 = new byte[]{5,3,1,7,3,8};
-            //tpss.Dispose();
-            tpss.Sort(testArray2);
+            tpss.Sort(testArray2);*/
             //Thread.Sleep(2000);
             //tpss.Dispose();
 
-            /*hread t1 = new Thread(en);
+            Thread t1 = new Thread(en);
             Thread t2 = new Thread(de);
             var q = new PCQueue();
             t1.Start(q);
-            t2.Start(q);*/
+            t2.Start(q);
         }
 
         public static void en(object q)

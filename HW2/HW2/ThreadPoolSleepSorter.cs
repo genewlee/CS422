@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.Concurrent;
 using System.IO;
 using System.Threading;
@@ -25,17 +24,17 @@ namespace CS422
             for (int i = 0; i < _numThreads; i++)
             {
                 Thread t = new Thread(ThreadWorkFunc);
-                t.Start(_coll);
+                t.Start();
             }
         }
 
-        private void ThreadWorkFunc(object coll)
+        private void ThreadWorkFunc()
         {
             while (true)
             {
-                var t = ((BlockingCollection<SleepSortTask>)coll).Take();     // dequeue from collection
-                if (t == null) break;
-                t.Execute();              // run Sleep()
+                SleepSortTask t = _coll.Take();     // dequeue from collection
+                if (t == null) break;               // for dispose()
+                t.Execute();                        // run Sleep()
             }
         }
 
@@ -63,9 +62,9 @@ namespace CS422
         /// </summary>
         private class SleepSortTask
         {
-            private int _data;
+            private byte _data;
 
-            public int Data
+            public byte Data
             {
                 get
                 {
@@ -77,15 +76,15 @@ namespace CS422
                 }
             }
 
-            public SleepSortTask (int data)
+            public SleepSortTask (byte data)
             {
                 _data = data;
             }
 
             public void Execute ()
             {
-                Thread.Sleep(1000 * (byte)_data);     // multiply by 1000 because num is milliseconds
-                _mwriter.WriteLine((byte)_data);
+                Thread.Sleep(1000 * _data);     // multiply by 1000 because num is milliseconds
+                _mwriter.WriteLine(_data);
             }
 
         }
