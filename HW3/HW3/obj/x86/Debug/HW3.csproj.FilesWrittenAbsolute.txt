@@ -1,0 +1,10 @@
+/Volumes/XDrive/CS422/HW3/HW3/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Volumes/XDrive/CS422/HW3/HW3/bin/Debug/HW3.exe.mdb
+/Volumes/XDrive/CS422/HW3/HW3/bin/Debug/HW3.exe
+/Volumes/XDrive/CS422/HW3/HW3/obj/x86/Debug/HW3.exe
+/Volumes/XDrive/CS422/HW3/HW3/obj/x86/Debug/HW3.exe.mdb
+/media/gene/XDrive/CS422/HW3/HW3/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/media/gene/XDrive/CS422/HW3/HW3/bin/Debug/HW3.exe.mdb
+/media/gene/XDrive/CS422/HW3/HW3/bin/Debug/HW3.exe
+/media/gene/XDrive/CS422/HW3/HW3/obj/x86/Debug/HW3.exe
+/media/gene/XDrive/CS422/HW3/HW3/obj/x86/Debug/HW3.exe.mdb

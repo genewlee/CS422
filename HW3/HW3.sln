@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW3", "HW3\HW3.csproj", "{C424286F-F1FD-4376-8844-38F96D38491C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C424286F-F1FD-4376-8844-38F96D38491C}.Debug|x86.ActiveCfg = Debug|x86
+		{C424286F-F1FD-4376-8844-38F96D38491C}.Debug|x86.Build.0 = Debug|x86
+		{C424286F-F1FD-4376-8844-38F96D38491C}.Release|x86.ActiveCfg = Release|x86
+		{C424286F-F1FD-4376-8844-38F96D38491C}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+EndGlobal

@@ -1,9 +1,9 @@
-﻿<Properties StartupConfiguration="{FCA304C9-7E2C-4582-A86C-49C3093A326A}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="HW2/Program.cs">
+﻿<Properties StartupItem="HW2/HW2.csproj" StartupConfiguration="{FCA304C9-7E2C-4582-A86C-49C3093A326A}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HW2/PCQueue.cs">
     <Files>
-      <File FileName="HW2/PCQueue.cs" Line="97" Column="14" />
-      <File FileName="HW2/ThreadPoolSleepSorter.cs" Line="13" Column="30" />
-      <File FileName="HW2/Program.cs" Line="16" Column="15" />
+      <File FileName="HW2/PCQueue.cs" Line="60" Column="10" />
+      <File FileName="HW2/ThreadPoolSleepSorter.cs" Line="37" Column="52" />
+      <File FileName="HW2/Program.cs" Line="31" Column="41" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
