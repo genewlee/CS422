@@ -63,7 +63,7 @@ namespace CS422
             while (readOffset != 0)
             {
                 totalRead += readOffset;
-                if (!CheckByteArray(buf, totalRead, false))
+                if (!CheckByteArray(buf, totalRead, false)) // do checks in between 
                 {
                     return false;
                 }
@@ -73,7 +73,7 @@ namespace CS422
                 }
                 readOffset = ns.Read(buf, totalRead, buf.Length - totalRead);
             }
-            validRequest = CheckByteArray(buf, totalRead, true);
+            validRequest = CheckByteArray(buf, totalRead, true); // do final check after all has been read
             return validRequest;
         }
 
@@ -85,21 +85,22 @@ namespace CS422
             Regex regex = new Regex(@"HTTP/(\d+\.\d+)", RegexOptions.IgnoreCase);
             string stringOfBuf = Encoding.ASCII.GetString(buf);
 
+            // If the entire stream has been read but it's total bytes read is less than 4
+            // If the total bytes read is >=4 and does equal to "GET "
             if ((totalRead < 4 && readAll) || Encoding.ASCII.GetString(buf, 0, totalRead < 4 ? totalRead : 4) != "GET ")
             {
                 return false; 
             }
-            if (readAll && !regex.IsMatch(stringOfBuf))
-            {
+            if (readAll && !regex.IsMatch(stringOfBuf)) 
+            {// If all has been read but the regex of HTTP does not match -> This may be never be handled because of next if statement
                 return false;
             }
             else if (regex.IsMatch(stringOfBuf))
-            {
-                /*Match match = regex.Match("HTTP/1.1");
-                if (!match.Success)
-                    return false;*/
+            {// If there is a match of HTTP/d.d then check if it is the correct version of 1.1
                 Regex ver = new Regex(@"\d+\.\d+");
-                if (ver.Match(regex.Match(stringOfBuf).ToString()).ToString() != "1.1")
+                string http = regex.Match(stringOfBuf).ToString();
+                string version = ver.Match(http).ToString();
+                if (version != "1.1")
                     return false;
             }
             return true;
@@ -111,6 +112,7 @@ namespace CS422
         /// </summary>
         public static void WriteResponseToClient(TcpClient client, byte[] buf)
         {
+            // / get the string in between the the 4th character which comes after GET and the next whitespace
             string _url = Encoding.ASCII.GetString(buf).Substring(4).Split(' ')[0];
             string response = string.Format(DefaultTemplate, 11216720, DateTime.Now, _url);
             byte[] responseBytes = Encoding.ASCII.GetBytes(response);
