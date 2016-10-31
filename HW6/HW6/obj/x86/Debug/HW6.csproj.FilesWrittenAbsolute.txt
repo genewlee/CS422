@@ -1,0 +1,10 @@
+/Volumes/XDrive/CS422/HW6/HW6/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Volumes/XDrive/CS422/HW6/HW6/bin/Debug/HW6.exe.mdb
+/Volumes/XDrive/CS422/HW6/HW6/bin/Debug/HW6.exe
+/Volumes/XDrive/CS422/HW6/HW6/obj/x86/Debug/HW6.exe
+/Volumes/XDrive/CS422/HW6/HW6/obj/x86/Debug/HW6.exe.mdb
+/media/gene/XDrive/CS422/HW6/HW6/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/media/gene/XDrive/CS422/HW6/HW6/bin/Debug/HW6.exe.mdb
+/media/gene/XDrive/CS422/HW6/HW6/bin/Debug/HW6.exe
+/media/gene/XDrive/CS422/HW6/HW6/obj/x86/Debug/HW6.exe
+/media/gene/XDrive/CS422/HW6/HW6/obj/x86/Debug/HW6.exe.mdb

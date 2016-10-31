@@ -1,0 +1,208 @@
+﻿using System;
+using System.Net.Sockets;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using System.CodeDom;
+
+namespace CS422
+{
+    public class WebRequest
+    {
+        NetworkStream _ns;
+        ConcurrentDictionary<string, string> _headers;
+        string _httpMethod;
+        string _requestURI;
+        string _httpVersion;
+        Stream _body;
+        byte[] _buffer;
+        long _bufLen;
+
+        public string RequestURI { get { return _requestURI; } }
+        public string HTTPMethod { get { return _httpMethod; } }
+        public string BodySize { get { 
+                long len = GetContentLengthOrDefault();
+                if (len != -1)
+                    return len.ToString();
+                return _bufLen.ToString();
+            } 
+        }
+        public string HTTPVersion { get { return _httpVersion; } }
+        public Stream Body { get { return _body;  }}
+        public ConcurrentDictionary<string, string> Headers { get { return _headers; } }
+
+        public WebRequest(NetworkStream ns, byte[] buf)
+        {
+            _httpMethod = _requestURI = _httpVersion = string.Empty;
+            _ns = ns;
+            _buffer = buf;
+            _bufLen = -1;
+            _headers = new ConcurrentDictionary<string, string>();
+            ParseHeaders();
+            CreateBodyStream();
+        }
+
+        public long GetContentLengthOrDefault()
+        {
+            long len;
+            foreach (var kvp in _headers)
+            {
+                if (kvp.Key.ToLower() == "content-length")
+                {
+                    var isLong = Int64.TryParse(kvp.Value, out len);
+                    if (isLong)
+                        return len;
+                }
+            }
+            return -1;
+        }
+
+        private void ParseHeaders()
+        {
+            string buf = Encoding.ASCII.GetString(_buffer);//.ToLower();
+            string header = buf.Split(new string[] { "\r\n\r\n" }, StringSplitOptions.None)[0];       // just the headers portion
+            //buf = buf.Substring(0, buf.IndexOf("\r\n\r\n") + 1);
+
+            string[] headers = header.Split("\r\n".ToCharArray()); // split headers by every newline
+            RequestInfo(headers[0]);
+
+            foreach (var line in headers)
+            {
+                if (line.Contains(":"))
+                {
+                    string[] hv = line.Split(':');
+                    string key = hv[0].ToLower();
+                    string val = hv[1].ToLower();
+                    _headers[key] = val;
+                }
+            }
+        }
+
+        private void RequestInfo(string line)
+        {
+            string[] httpInfo = line.Split(' ');
+
+            _httpMethod = httpInfo[0];
+            _requestURI = httpInfo[1];
+            _httpVersion = httpInfo[2];
+        }
+
+        /*private void CreateBodyStream()
+        {
+            byte[] buf = new byte[4096];
+            MemoryStream ms = new MemoryStream();
+            while (_ns.DataAvailable)
+            {
+                int readBytes = _ns.Read(buf, 0, buf.Length);
+                ms.Write(buf, 0, readBytes);
+            }
+            byte[] buf2 = new byte[ms.Length];
+            ms.Seek(0, SeekOrigin.Begin);
+            ms.Read(buf2, 0, (int)ms.Length);
+            string stringBuf = Encoding.ASCII.GetString(buf2);
+
+            if (stringBuf == string.Empty || stringBuf[0] == '\0')
+            {
+                _body = _ns;
+                _bufLen = 0;
+            }
+            else // null chars after some text in buf
+            {
+                _bufLen = Encoding.ASCII.GetBytes(stringBuf).Length;
+
+                // create concat stream of the memory stream and network stream
+                if (_bufLen < 0)
+                    _body = new ConcatStream(ms, _ns);
+                else
+                    _body = new ConcatStream(ms, _ns, _bufLen);
+            }
+        }*/
+
+        private void CreateBodyStream()
+        {
+            // Check if body data in buffer
+            string body = Encoding.ASCII.GetString(_buffer).ToLower();
+            List<string> bodyPieces = new List<String>(body.Split(new string[] { "\r\n\r\n" }, StringSplitOptions.None));       // body portion
+
+            // if not body stream is just the network stream; return;
+            if (bodyPieces.Count < 2)
+                return;
+
+            // otherwise, need new buffer that starts from the \r\n\r\n
+            _bufLen = Encoding.ASCII.GetBytes(bodyPieces[1]).Length;
+            //byte[] buf = Encoding.ASCII.GetBytes(bodyPieces[1]);
+
+            if (bodyPieces[1] == string.Empty && bodyPieces.Count > 1)
+            {
+                bodyPieces.RemoveAt(1);
+                _bufLen = 0;
+            }
+            else // null chars after some text in buf
+            {
+                int i = 0;
+                for (; i < bodyPieces[1].Length && bodyPieces[1][i] != '\0'; i++) {}
+                if (i <= bodyPieces[1].Length)
+                    bodyPieces[1] = bodyPieces[1].Substring(0, i);
+                _bufLen = Encoding.ASCII.GetBytes(bodyPieces[1]).Length;
+            }
+
+            if (bodyPieces.Count == 1)
+            {
+                _body = _ns;
+                //if (_bufLen != -1)
+                    //_body.SetLength(_bufLen);
+            }
+            else
+            {
+                // create memory stream of buf
+                MemoryStream ms = new MemoryStream(Encoding.ASCII.GetBytes(bodyPieces[1]));
+
+                // create concat stream of the memory stream and network stream
+                if (_bufLen < 0)
+                    _body = new ConcatStream(ms, _ns);
+                else
+                    _body = new ConcatStream(ms, _ns, _bufLen);
+            }
+        }
+
+        public void WriteNotFoundResponse(string pageHTML)
+        {
+            string template = "HTTP/1.1 404 NOT FOUND\r\n" +
+                "Content-Type: text/html\r\n" +
+                "Content-Length: {0}\r\n" + "\r\n" +
+                "{1}";
+            string response = string.Format(template, Encoding.ASCII.GetBytes(pageHTML).Length, pageHTML);
+
+            byte[] byteResponse = Encoding.ASCII.GetBytes(response);
+            _ns.Write(byteResponse, 0, byteResponse.Length);
+        }
+
+        public bool WriteHTMLResponse(string htmlString)
+        {
+            string template = "HTTP/1.1 200 OK\r\n" +
+                "Content-Type: text/html\r\n" +
+                "Content-Length: {0}\r\n" + "\r\n" +
+                "{1}";
+            string response = string.Format(template, Encoding.ASCII.GetBytes(htmlString).Length, htmlString);
+
+            byte[] byteResponse = Encoding.ASCII.GetBytes(response);
+            _ns.Write(byteResponse, 0, byteResponse.Length);
+            return true;
+        }
+
+        public bool WriteResponse (byte[] buf, int offset, int length)
+        {
+            try
+            {
+                _ns.Write(buf, offset, length);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+    }
+}
+

@@ -1,0 +1,10 @@
+/Volumes/XDrive/CS422/HW9/HW9/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Volumes/XDrive/CS422/HW9/HW9/bin/Debug/HW9.exe.mdb
+/Volumes/XDrive/CS422/HW9/HW9/bin/Debug/HW9.exe
+/Volumes/XDrive/CS422/HW9/HW9/obj/x86/Debug/HW9.exe
+/Volumes/XDrive/CS422/HW9/HW9/obj/x86/Debug/HW9.exe.mdb
+/media/gene/XDrive/CS422/HW9/HW9/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/media/gene/XDrive/CS422/HW9/HW9/bin/Debug/HW9.exe.mdb
+/media/gene/XDrive/CS422/HW9/HW9/bin/Debug/HW9.exe
+/media/gene/XDrive/CS422/HW9/HW9/obj/x86/Debug/HW9.exe
+/media/gene/XDrive/CS422/HW9/HW9/obj/x86/Debug/HW9.exe.mdb

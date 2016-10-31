@@ -1,14 +1,17 @@
-﻿<Properties StartupItem="HW3/HW3.csproj">
-  <MonoDevelop.Ide.Workbench ActiveDocument="HW3/WebServer.cs">
+﻿<Properties StartupConfiguration="{C424286F-F1FD-4376-8844-38F96D38491C}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HW3/Program.cs">
     <Files>
-      <File FileName="HW3/WebServer.cs" Line="63" Column="1" />
+      <File FileName="HW3/WebServer.cs" Line="39" Column="18" />
       <File FileName="HW3/Program.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/media/gene/XDrive/CS422/HW3/HW3/WebServer.cs" line="92" column="1" />
+      <Breakpoint file="/Volumes/XDrive/CS422/HW3/HW3/WebServer.cs" line="63" column="1" />
+      <Breakpoint file="/Volumes/XDrive/CS422/HW3/HW3/WebServer.cs" line="90" column="1" />
+      <Breakpoint file="/media/gene/XDrive/CS422/HW3/HW3/WebServer.cs" line="38" column="1" />
+      <Breakpoint file="/media/gene/XDrive/CS422/HW3/HW3/WebServer.cs" line="106" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

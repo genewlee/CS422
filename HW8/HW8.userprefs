@@ -1,0 +1,33 @@
+﻿<Properties RefactoringSettings.EnableRefactorings="True" StartupConfiguration="{4FB28B5E-F9CD-432E-9579-5613F8056154}|Unit Tests">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HW8/MemoryFileSystemUnitTests.cs">
+    <Files>
+      <File FileName="HW8/FileSystemDefs.cs" Line="428" Column="37" />
+      <File FileName="HW8/StandardFileSystemUnitTests.cs" Line="116" Column="10" />
+      <File FileName="HW8/MemoryFileSystemUnitTests.cs" Line="116" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State name="__root__">
+          <Node name="HW8" expanded="True">
+            <Node name="HW8" expanded="True">
+              <Node name="CS422" expanded="True">
+                <Node name="FileSystemDefsUnitTests" expanded="True" />
+                <Node name="MemoryFileSystemUnitTests" expanded="True" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/media/gene/XDrive/CS422/HW8/HW8/FileSystemDefsUnitTests.cs" line="13" column="1" />
+      <Breakpoint file="/media/gene/XDrive/CS422/HW8/HW8/FileSystemDefs.cs" line="10" column="1" />
+      <Breakpoint file="/media/gene/XDrive/CS422/HW8/HW8/StandardFileSystemUnitTests.cs" line="119" column="47" />
+      <Breakpoint file="/media/gene/XDrive/CS422/HW8/HW8/MemoryFileSystemUnitTests.cs" line="115" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

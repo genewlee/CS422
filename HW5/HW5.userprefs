@@ -1,0 +1,26 @@
+﻿<Properties RefactoringSettings.EnableRefactorings="True" StartupConfiguration="{1C389D20-B0D5-4E7F-9C0E-C218021E7E71}|Default" StartupItem="HW5/HW5.csproj">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HW5/UnitTest.cs">
+    <Files>
+      <File FileName="HW5/ConcatStream.cs" Line="1" Column="1" />
+      <File FileName="HW5/NoSeekMemoryStream.cs" Line="1" Column="1" />
+      <File FileName="HW5/UnitTest.cs" Line="7" Column="20" />
+      <File FileName="HW5/packages.config" Line="4" Column="12" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Volumes/XDrive/CS422/HW5/HW5/NoSeekMemoryStream.cs" line="55" column="1" />
+      <Breakpoint file="/media/gene/XDrive/CS422/HW5/HW5/UnitTest.cs" line="19" column="1" />
+      <Breakpoint file="/Users/Gene/Desktop/ConcatStreamTests.cs" line="75" column="1" />
+      <Breakpoint file="/Users/Gene/Desktop/ConcatStreamTests.cs" line="35" column="1" />
+      <Breakpoint file="/Volumes/XDrive/CS422/HW5/HW5/UnitTest.cs" line="241" column="1" />
+      <Breakpoint file="/Volumes/XDrive/CS422/HW5/HW5/UnitTest.cs" line="153" column="1" />
+      <Breakpoint file="/Volumes/XDrive/CS422/HW5/HW5/UnitTest.cs" line="52" column="23" />
+      <Breakpoint file="/Volumes/XDrive/CS422/HW5/HW5/UnitTest.cs" line="27" column="1" />
+      <Breakpoint file="/Volumes/XDrive/CS422/HW5/HW5/ConcatStream.cs" line="124" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.HW5 PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

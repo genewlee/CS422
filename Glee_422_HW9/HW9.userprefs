@@ -1,0 +1,17 @@
+﻿<Properties StartupConfiguration="{4B24DF0B-8F3C-47D7-84A3-9290FB8461A9}|Default" StartupItem="HW9/HW9.csproj">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HW9/Program.cs">
+    <Files>
+      <File FileName="HW9/FilesWebService.cs" Line="153" Column="1" />
+      <File FileName="HW9/WebServer.cs" Line="1" Column="1" />
+      <File FileName="HW9/Program.cs" Line="13" Column="15" />
+      <File FileName="HW9/WebRequest.cs" Line="1" Column="1" />
+      <File FileName="HW9/FileSystemDefs.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.HW9 PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
