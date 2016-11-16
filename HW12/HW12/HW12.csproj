@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{41FA118B-0E31-4922-B459-A045827B8233}</ProjectGuid>
+    <ProjectGuid>{75899C27-2074-44EE-996D-2686238DFEC0}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CS422</RootNamespace>
-    <AssemblyName>HW10</AssemblyName>
+    <RootNamespace>HW12</RootNamespace>
+    <AssemblyName>HW12</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -18,7 +18,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <Optimize>true</Optimize>
@@ -26,22 +25,26 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BigNum.cs" />
+    <Compile Include="ConcatStream.cs" />
+    <Compile Include="NoSeekMemoryStream.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="BigNumTests.cs" />
+    <Compile Include="UnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Numerics" />
+    <Reference Include="System.Net" />
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="DemoService.cs" />
+    <None Include="WebRequest.cs" />
+    <None Include="WebService.cs" />
+    <None Include="WebServer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

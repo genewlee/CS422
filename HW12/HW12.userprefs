@@ -1,0 +1,33 @@
+﻿<Properties StartupConfiguration="{75899C27-2074-44EE-996D-2686238DFEC0}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HW12/UnitTest.cs">
+    <Files>
+      <File FileName="HW12/Program.cs" Line="1" Column="1" />
+      <File FileName="HW12/ConcatStream.cs" Line="1" Column="1" />
+      <File FileName="HW12/DemoService.cs" Line="22" Column="17" />
+      <File FileName="HW12/NoSeekMemoryStream.cs" Line="1" Column="1" />
+      <File FileName="HW12/WebRequest.cs" Line="80" Column="21" />
+      <File FileName="HW12/WebServer.cs" Line="142" Column="29" />
+      <File FileName="HW12/WebService.cs" Line="11" Column="38" />
+      <File FileName="HW12/UnitTest.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="HW12" expanded="True" selected="True">
+            <Node name="HW12" expanded="True">
+              <Node name="CS422" expanded="True">
+                <Node name="UnitTest" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.ItemProperties.HW12 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

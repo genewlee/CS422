@@ -1,0 +1,6 @@
+/Volumes/XDrive/CS422/HW12/HW12/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Volumes/XDrive/CS422/HW12/HW12/bin/Debug/nunit.framework.dll
+/Volumes/XDrive/CS422/HW12/HW12/bin/Debug/HW12.exe.mdb
+/Volumes/XDrive/CS422/HW12/HW12/bin/Debug/HW12.exe
+/Volumes/XDrive/CS422/HW12/HW12/obj/x86/Debug/HW12.exe
+/Volumes/XDrive/CS422/HW12/HW12/obj/x86/Debug/HW12.exe.mdb

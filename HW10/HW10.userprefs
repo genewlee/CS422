@@ -1,14 +1,20 @@
 ﻿<Properties StartupConfiguration="{41FA118B-0E31-4922-B459-A045827B8233}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="HW10/BigNum.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HW10/Program.cs">
     <Files>
-      <File FileName="HW10/BigNum.cs" Line="160" Column="25" />
-      <File FileName="HW10/Program.cs" Line="27" Column="40" />
+      <File FileName="HW10/BigNum.cs" Line="148" Column="1" />
+      <File FileName="HW10/Program.cs" Line="62" Column="7" />
+      <File FileName="HW10/BigNumTests.cs" Line="79" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.ItemProperties.HW10 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/media/gene/XDrive/CS422/HW10/HW10/BigNum.cs" line="137" column="49" />
+      <Breakpoint file="/media/gene/XDrive/CS422/HW10/HW10/BigNum.cs" line="35" column="1" />
+      <Breakpoint file="/Volumes/XDrive/CS422/HW10/HW10/Program.cs" line="73" column="1" />
+      <Breakpoint file="/Volumes/XDrive/CS422/HW10/HW10/Program.cs" line="72" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

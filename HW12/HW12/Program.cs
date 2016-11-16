@@ -5,8 +5,6 @@ namespace CS422
     {
         static void Main()
         {
-            WebServer.AddService(new DemoService());
-            WebServer.Start(8080, 64);
         }
     }
 }
