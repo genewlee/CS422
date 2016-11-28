@@ -1,0 +1,5 @@
+/Volumes/XDrive/CS422/HW13/HW13/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Volumes/XDrive/CS422/HW13/HW13/bin/Debug/HW13.exe.mdb
+/Volumes/XDrive/CS422/HW13/HW13/bin/Debug/HW13.exe
+/Volumes/XDrive/CS422/HW13/HW13/obj/x86/Debug/HW13.exe
+/Volumes/XDrive/CS422/HW13/HW13/obj/x86/Debug/HW13.exe.mdb

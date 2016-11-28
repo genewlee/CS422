@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{DEAB2261-9B6E-4707-9500-08D3FA5523AC}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HW13/Program.cs">
+    <Files>
+      <File FileName="HW13/FilesWebService.cs" Line="34" Column="1" />
+      <File FileName="HW13/WebRequest.cs" Line="2" Column="14" />
+      <File FileName="HW13/Program.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.ItemProperties.HW13 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
