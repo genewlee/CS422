@@ -44,6 +44,7 @@ namespace CS422
             {
                 _listener = new TcpListener(IPAddress.Any, _port);
 
+
                 _listener.Start();
 
                 while (true)
@@ -142,7 +143,7 @@ namespace CS422
             NetworkStream ns = client.GetStream();
 
             /* timeout for an individual read on the network stream */
-            ns.ReadTimeout = 1500;
+            ns.ReadTimeout = 2000;
 
             DateTime startTime = DateTime.Now;
 
@@ -195,8 +196,9 @@ namespace CS422
             string stringOfBuf = Encoding.ASCII.GetString(buf);
 
             // If the entire stream has been read but it's total bytes read is less than 4
-            // If the total bytes read is >=4 and does equal to "GET "
-            if ((totalRead < 4 && readAll) || Encoding.ASCII.GetString(buf, 0, totalRead < 4 ? totalRead : 4) != "GET ")
+            // If the total bytes read is >=4 and does equal to "GET " or "PUT "
+            if (((totalRead < 4 && readAll) || Encoding.ASCII.GetString(buf, 0, totalRead < 4 ? totalRead : 4) != "GET ") &&
+                ((totalRead < 4 && readAll) || Encoding.ASCII.GetString(buf, 0, totalRead < 4 ? totalRead : 4) != "PUT "))
             {
                 return false;
             }

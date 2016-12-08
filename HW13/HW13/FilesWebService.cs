@@ -2,6 +2,7 @@
 using System.Text;
 using System.IO;
 using System.Collections.Generic;
+using System.Net.Sockets;
 
 namespace CS422
 {
@@ -46,6 +47,7 @@ namespace CS422
             for (int i = 0; i < pieces.Length - 1; i++)
             {
                 string piece = pieces[i];
+                piece = PercentDecoding(piece);
                 dir = dir.GetDir(piece);
                 if (dir == null)
                 {
@@ -56,6 +58,56 @@ namespace CS422
 
             string name = PercentDecoding(pieces[pieces.Length - 1]);
 
+            if (req.HTTPMethod.ToLower() == "get")
+            {
+                GETHandler(req, name, dir);
+            }
+            else if (req.HTTPMethod.ToLower() == "put")
+            {
+                PUTHandler(req, name, dir);
+            }
+        }
+
+        private void PUTHandler (WebRequest req, string name, Dir422 dir)
+        {
+            if (dir.ContainsFile(name, false) || name.Contains("\\") || name.Contains("/")) 
+            {
+                string bodyMessage = "Invalid: File already exists or filename is invalid";
+                string template = "HTTP/1.1 400 Bad Request\r\n" +
+                    "Content-Type: text/html\r\n" +
+                    "Content-Length: {0}\r\n\r\n" +
+                    "{1}";
+
+                string response = string.Format(template, Encoding.ASCII.GetBytes(bodyMessage).Length, bodyMessage);
+                byte[] responseBytes = Encoding.ASCII.GetBytes(response);
+                req.WriteResponse(responseBytes, 0, responseBytes.Length);
+                return;
+            }
+
+            File422 file = dir.CreateFile(name);
+            FileStream fs = (FileStream)file.OpenReadWrite();
+
+            long fileSize = 0;
+            Int64.TryParse(req.BodySize, out fileSize);
+            int totalread = 0;
+
+            while (true)
+            {
+                byte[] buf = new byte[4096];
+                int read = req.Body.Read(buf, 0, buf.Length);
+                fs.Write(buf, 0, read);
+                totalread += read;
+                if ((read == 0) || read < buf.Length && totalread >= fileSize) 
+                { 
+                    break;
+                }
+            }
+            fs.Dispose(); fs.Close();
+            req.WriteHTMLResponse("Successfully uploaded file: " + name);
+        }
+
+        private void GETHandler(WebRequest req, string name, Dir422 dir)
+        {
             File422 file = dir.GetFile(name);
             if (file != null)
             {
@@ -160,14 +212,14 @@ namespace CS422
                 html.AppendFormat(
                 "<hr><h3 id='uploadHdr'>Upload</h3><br>" +
                 "<input id=\"uploader\" type='file' " + "onchange='selectedFileChanged(this,\"{0}\")' /><hr>",
-                    GetHREF(directory, true));
+                    GetHREF(directory));
             }
             html.Append("</html>");
 
             return html.ToString();
         }
 
-        private string GetHREF(Dir422 dir, bool foo)
+        private string GetHREF(Dir422 dir)
         {
             StringBuilder sb = new StringBuilder("/files");
             List<string> dirs = new List<string>();
@@ -186,8 +238,6 @@ namespace CS422
 
             return sb.ToString();
         }
-
-
 
         private void RespondWithFile(File422 file, WebRequest req)
         {

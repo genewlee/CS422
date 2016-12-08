@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using System.Net.Sockets;
+using System.Text;
 
 namespace CS422
 {
@@ -106,21 +108,25 @@ namespace CS422
             }
             else
             {
-                if (Position + count <= m_first.Length) // to first stream
-                    bytesRead = m_first.Read(buffer, offset, count);
-
-                else if (Position > m_first.Length) // all to second stream
-                    bytesRead = m_second.Read(buffer, offset, count);
-
-                else // both streams
+                try
                 {
-                    int room = (int)(m_first.Length - m_first.Position);
-                    bytesRead = m_first.Read(buffer, offset, room);
-                    bytesRead += m_second.Read(buffer, offset + room, count - room);
-                }
+                    if (position + count <= m_first.Length) // from first stream
+                        bytesRead = m_first.Read(buffer, offset, count);
 
+                    else if (position > m_first.Length) // all from second stream
+                        bytesRead = m_second.Read(buffer, offset, count);
+
+                    else // both streams
+                    {
+                        int room = (int)(m_first.Length - m_first.Position);
+                        bytesRead = room > 0 ? m_first.Read(buffer, offset, room) : 0;
+                        if (len > m_first.Length && bytesRead < buffer.Length)
+                            bytesRead += m_second.Read(buffer, offset + bytesRead, count - bytesRead);
+                    }
+                }
+                catch (Exception e) {}
             }
-            Position += bytesRead;
+            position += bytesRead;
             return bytesRead;
         }
 

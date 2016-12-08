@@ -7,7 +7,7 @@ namespace CS422
         static void Main()
         {
             //Mac
-            WebServer.AddService(new FilesWebService(StandardFileSystem.Create("/Users/Gene/Desktop/TRUST")));
+            WebServer.AddService(new FilesWebService(StandardFileSystem.Create("/Users/Gene/Desktop")));
 
             //Linux
             //WebServer.AddService(new FilesWebService(StandardFileSystem.Create("/home/gene/Desktop")));

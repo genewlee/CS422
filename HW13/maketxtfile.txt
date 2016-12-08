@@ -1,0 +1,2 @@
+# make a 1gb file
+dd if=/dev/zero of=~/Desktop/onegb.txt count=1024 bs=1048576

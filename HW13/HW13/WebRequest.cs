@@ -4,7 +4,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.CodeDom;
 
 namespace CS422
 {
@@ -88,75 +87,86 @@ namespace CS422
             _httpVersion = httpInfo[2];
         }
 
-        /*private void CreateBodyStream()
-        {
-            byte[] buf = new byte[4096];
-            MemoryStream ms = new MemoryStream();
-            while (_ns.DataAvailable)
-            {
-                int readBytes = _ns.Read(buf, 0, buf.Length);
-                ms.Write(buf, 0, readBytes);
-            }
-            byte[] buf2 = new byte[ms.Length];
-            ms.Seek(0, SeekOrigin.Begin);
-            ms.Read(buf2, 0, (int)ms.Length);
-            string stringBuf = Encoding.ASCII.GetString(buf2);
+        //private void CreateBodyStream()
+        //{
+        //    // Check if body data in buffer
+        //    string body = Encoding.ASCII.GetString(_buffer);//.ToLower();
+        //    List<string> bodyPieces = new List<String>(body.Split(new string[] { "\r\n\r\n" }, StringSplitOptions.None));       // body portion
 
-            if (stringBuf == string.Empty || stringBuf[0] == '\0')
-            {
-                _body = _ns;
-                _bufLen = 0;
-            }
-            else // null chars after some text in buf
-            {
-                _bufLen = Encoding.ASCII.GetBytes(stringBuf).Length;
+        //    // if not body stream is just the network stream; return;
+        //    if (bodyPieces.Count < 2)
+        //        return;
 
-                // create concat stream of the memory stream and network stream
-                if (_bufLen < 0)
-                    _body = new ConcatStream(ms, _ns);
-                else
-                    _body = new ConcatStream(ms, _ns, _bufLen);
-            }
-        }*/
+        //    // otherwise, need new buffer that starts from the \r\n\r\n
+        //    _bufLen = Encoding.ASCII.GetBytes(bodyPieces[1]).Length;
+        //    //byte[] buf = Encoding.ASCII.GetBytes(bodyPieces[1]);
+
+        //    if (bodyPieces[1] == string.Empty || bodyPieces.Count > 1)
+        //    {
+        //        bodyPieces.RemoveAt(1);
+        //        _bufLen = 0;
+        //    }
+        //    else // null chars after some text in buf
+        //    {
+        //        //int i = 0;
+        //        //for (; i < bodyPieces[1].Length && bodyPieces[1][i] != '\0'; i++) {}
+        //        //if (i <= bodyPieces[1].Length)
+        //        //    bodyPieces[1] = bodyPieces[1].Substring(0, i);
+        //        //bodyPieces[1] = bodyPieces[1].TrimEnd('\0');
+        //        _bufLen = Encoding.ASCII.GetBytes(bodyPieces[1]).Length;
+        //    }
+
+        //    if (bodyPieces.Count == 1)
+        //    {
+        //        _body = _ns;
+        //    }
+        //    else
+        //    {
+        //        // create memory stream of buf
+        //        MemoryStream ms = new MemoryStream(Encoding.ASCII.GetBytes(bodyPieces[1]));
+
+        //        // create concat stream of the memory stream and network stream
+        //        if (_bufLen < 0)
+        //            _body = new ConcatStream(ms, _ns);
+        //        else
+        //            _body = new ConcatStream(ms, _ns, _bufLen);
+        //    }
+        //}
 
         private void CreateBodyStream()
         {
             // Check if body data in buffer
-            string body = Encoding.ASCII.GetString(_buffer).ToLower();
-            List<string> bodyPieces = new List<String>(body.Split(new string[] { "\r\n\r\n" }, StringSplitOptions.None));       // body portion
+            string body = Encoding.ASCII.GetString(_buffer).Trim('\0');//.ToLower();
+            int bodyStartIndex = body.IndexOf("\r\n\r\n", StringComparison.Ordinal) + "\r\n\r\n".Length;
 
-            // if not body stream is just the network stream; return;
-            if (bodyPieces.Count < 2)
-                return;
+            //remove trailing zeros if any
+            int endIndex = _buffer.Length - 1;
+            while (endIndex >= 0 && _buffer[endIndex] == 0)
+                endIndex--;
+            byte[] buf = new byte[endIndex + 1];
+            Array.Copy(_buffer, 0, buf, 0, endIndex + 1);
 
-            // otherwise, need new buffer that starts from the \r\n\r\n
-            _bufLen = Encoding.ASCII.GetBytes(bodyPieces[1]).Length;
-            //byte[] buf = Encoding.ASCII.GetBytes(bodyPieces[1]);
+            // body portion
+            MemoryStream bs = new MemoryStream();
+            bs.Write(_buffer, 0, buf.Length);
+            bs.Seek(bodyStartIndex, SeekOrigin.Begin);
 
-            if (bodyPieces[1] == string.Empty && bodyPieces.Count > 1)
-            {
-                bodyPieces.RemoveAt(1);
-                _bufLen = 0;
-            }
-            else // null chars after some text in buf
-            {
-                int i = 0;
-                for (; i < bodyPieces[1].Length && bodyPieces[1][i] != '\0'; i++) {}
-                if (i <= bodyPieces[1].Length)
-                    bodyPieces[1] = bodyPieces[1].Substring(0, i);
-                _bufLen = Encoding.ASCII.GetBytes(bodyPieces[1]).Length;
-            }
-
-            if (bodyPieces.Count == 1)
+            // if no body stream, is just the network stream; return;
+            if (bs.Length < 0)
             {
                 _body = _ns;
-                //if (_bufLen != -1)
-                    //_body.SetLength(_bufLen);
+                return;
             }
+
             else
             {
                 // create memory stream of buf
-                MemoryStream ms = new MemoryStream(Encoding.ASCII.GetBytes(bodyPieces[1]));
+                MemoryStream ms = new MemoryStream();
+                bs.CopyTo(ms);
+
+                //_bufLen = ms.Length;
+                long.TryParse(BodySize, out _bufLen);
+                ms.Position = 0;
 
                 // create concat stream of the memory stream and network stream
                 if (_bufLen < 0)
