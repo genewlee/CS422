@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProjectGuid>{FAA04D20-733B-41CA-8A67-8977C5ABA519}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>HW14</RootNamespace>
+    <RootNamespace>HW14Questions</RootNamespace>
     <AssemblyName>HW14</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>

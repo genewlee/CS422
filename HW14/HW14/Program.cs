@@ -28,13 +28,13 @@ namespace HW14Questions
 			//Q1();
 			//Q2();
 			//Q3();
-			Q4();
+			//Q4();
 			//Q5();
 			//Q6();
 			//Q7();
 			//Q8();
 			//Q9();
-			//Q10();
+			Q10();
 		}
 
 		// What's wrong with the insertion sort algorithm implementation in this function?
@@ -234,7 +234,7 @@ namespace HW14Questions
 		// and why it causes the XDocument code to throw an exception.
 		private static void Q10()
 		{
-            string stringValue = "\f";
+            string stringValue = "\0";
 
 			XDocument doc = new XDocument();
 			doc.Add(new XElement("simple_root"));

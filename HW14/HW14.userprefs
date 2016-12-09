@@ -1,13 +1,13 @@
-﻿<Properties StartupConfiguration="{FAA04D20-733B-41CA-8A67-8977C5ABA519}|Default">
+﻿<Properties StartupConfiguration="{FAA04D20-733B-41CA-8A67-8977C5ABA519}|Default" StartupItem="HW14/HW14.csproj">
   <MonoDevelop.Ide.Workbench ActiveDocument="HW14/Program.cs">
     <Files>
-      <File FileName="HW14/Program.cs" Line="31" Column="4" />
+      <File FileName="HW14/Program.cs" Line="242" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.ItemProperties.HW14 PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.HW14 PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>
